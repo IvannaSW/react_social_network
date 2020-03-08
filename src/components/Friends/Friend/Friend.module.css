@@ -1,0 +1,8 @@
+.friendItem .avatar img {
+    width: 20px;
+    height: 20px;
+}
+
+.friendItem .name {
+    color: #ffffff;
+}
