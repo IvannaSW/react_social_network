@@ -2,6 +2,7 @@ import React from 'react';
 import s from './ProfileInfo.module.css';
 import profileReducer from '../../../redux/profile-reducer';
 import Preloader from '../../common/Preloader/Preloader';
+import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
     if (!props.profile){
@@ -16,6 +17,7 @@ const ProfileInfo = (props) => {
                 <img src={props.profile.photos.large} />
                 <div>{props.profile.aboutMe}</div>
             </div>
+            <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
         </div>
     );
 }
