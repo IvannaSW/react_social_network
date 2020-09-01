@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Route, withRouter} from 'react-router-dom';
+import {Route, withRouter, Redirect, Switch} from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import Music from './components/Music/Music';
@@ -30,13 +30,17 @@ class App extends React.Component {
         <HeaderContainer />
         <Navbar />
         <div className='app-wrapper-content'>
+        <Switch>
+          <Route exact path='/' render={() => <Redirect to={"/profile"}/>}/>
           <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
           <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)} />
           <Route path='/users'render={() => <UsersContainer />} />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
           <Route path='/settings' component={Settings} />
-          <Route path='/login' component={LoginPage} />            
+          <Route path='/login' component={LoginPage} />
+          <Route path='*' render={() => <div>404 NOT FOUND</div>}/>
+        </Switch>           
         </div>        
       </div>        
     );
